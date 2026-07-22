@@ -33,14 +33,6 @@ public class MovieController {
                 .body(movie);
     }
 
-    @GetMapping
-    public ResponseEntity<List<MovieResponseDto>> getAllMovies() {
-
-        List<MovieResponseDto> movies = movieService.getAllMovies();
-
-        return ResponseEntity.ok(movies);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<MovieResponseDto> getMovieById(
             @PathVariable Long id) {
