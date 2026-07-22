@@ -177,7 +177,8 @@ https://github.com/MehribanNusretova
 
 LinkedIn:
 
-(Add your LinkedIn profile here)
+www.linkedin.com/in/mehriban-nusratova
+
 
 ---
 
