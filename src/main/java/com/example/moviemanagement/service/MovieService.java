@@ -2,6 +2,8 @@ package com.example.moviemanagement.service;
 
 import com.example.moviemanagement.dto.MovieRequestDto;
 import com.example.moviemanagement.dto.MovieResponseDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,4 +15,5 @@ public interface MovieService {
     MovieResponseDto getMovieById(Long id);
     MovieResponseDto updateMovie(Long id, MovieRequestDto movieRequestDto);
     void deleteMovie(Long id);
+    Page<MovieResponseDto> getAllMovies(Pageable pageable);
 }

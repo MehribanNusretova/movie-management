@@ -11,6 +11,8 @@ import com.example.moviemanagement.repesitory.DirectorRepository;
 import com.example.moviemanagement.repesitory.GenreRepository;
 import com.example.moviemanagement.repesitory.MovieRepository;
 import com.example.moviemanagement.service.MovieService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -91,5 +93,11 @@ public class MovieServiceImpl implements MovieService {
         Movie movie = movieRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Movie not found with id: " + id));
         movieRepository.delete(movie);
+    }
+
+    @Override
+    public Page<MovieResponseDto> getAllMovies(Pageable pageable) {
+        return movieRepository.findAll(pageable)
+                .map(movieMapper::toResponseDto);
     }
 }

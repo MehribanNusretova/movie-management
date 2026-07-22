@@ -3,6 +3,10 @@ package com.example.moviemanagement.controller;
 import com.example.moviemanagement.dto.MovieRequestDto;
 import com.example.moviemanagement.dto.MovieResponseDto;
 import com.example.moviemanagement.service.MovieService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -62,5 +66,11 @@ public class MovieController {
         movieService.deleteMovie(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<MovieResponseDto>> getAllMovies(
+            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        return ResponseEntity.ok(movieService.getAllMovies(pageable));
     }
 }
