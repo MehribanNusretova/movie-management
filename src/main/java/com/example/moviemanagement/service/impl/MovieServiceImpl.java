@@ -34,13 +34,13 @@ public class MovieServiceImpl implements MovieService {
     }
     @Override
     public MovieResponseDto createMovie(MovieRequestDto movieRequestDto) {
-        Director director = directorRepository.findById(requestDto.getDirectorId())
+        Director director = directorRepository.findById(movieRequestDto.getDirectorId())
                 .orElseThrow(() -> new RuntimeException("Director not found"));
 
-        Genre genre = genreRepository.findById(requestDto.getGenreId())
+        Genre genre = genreRepository.findById(movieRequestDto.getGenreId())
                 .orElseThrow(() -> new RuntimeException("Genre not found"));
 
-        Movie movie = movieMapper.toEntity(requestDto);
+        Movie movie = movieMapper.toEntity(movieRequestDto);
 
         movie.setDirector(director);
         movie.setGenre(genre);
@@ -70,15 +70,15 @@ public class MovieServiceImpl implements MovieService {
     public MovieResponseDto updateMovie(Long id, MovieRequestDto movieRequestDto) {
        Movie movie=movieRepository.findById(id)
                .orElseThrow(()-> new RuntimeException("Movie not found"));
-       Director director=directorRepository.findById(requestDto.getDirectorId())
+       Director director=directorRepository.findById(movieRequestDto.getDirectorId())
                .orElseThrow(() -> new RuntimeException("Director not found"));
-       Genre genre = genreRepository.findById(requestDto.getGenreId())
+       Genre genre = genreRepository.findById(movieRequestDto.getGenreId())
                 .orElseThrow(() -> new RuntimeException("Genre not found"));
 
-        movie.setTitle(requestDto.getTitle());
-        movie.setDescription(requestDto.getDescription());
-        movie.setReleaseYear(requestDto.getReleaseYear());
-        movie.setRating(requestDto.getRating());
+        movie.setTitle(movieRequestDto.getTitle());
+        movie.setDescription(movieRequestDto.getDescription());
+        movie.setReleaseYear(movieRequestDto.getReleaseYear());
+        movie.setRating(movieRequestDto.getRating());
 
         movie.setDirector(director);
         movie.setGenre(genre);
