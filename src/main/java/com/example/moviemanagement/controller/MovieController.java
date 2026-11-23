@@ -3,6 +3,7 @@ package com.example.moviemanagement.controller;
 import com.example.moviemanagement.dto.MovieRequestDto;
 import com.example.moviemanagement.dto.MovieResponseDto;
 import com.example.moviemanagement.service.MovieService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,7 +26,7 @@ public class MovieController {
 
     @PostMapping
     public ResponseEntity<MovieResponseDto> createMovie(
-            @RequestBody MovieRequestDto requestDto) {
+            @Valid @RequestBody MovieRequestDto requestDto) {
 
         MovieResponseDto movie = movieService.createMovie(requestDto);
 
@@ -45,7 +46,7 @@ public class MovieController {
     @PutMapping("/{id}")
     public ResponseEntity<MovieResponseDto> updateMovie(
             @PathVariable Long id,
-            @RequestBody MovieRequestDto requestDto) {
+            @Valid @RequestBody MovieRequestDto requestDto) {
 
         MovieResponseDto movie = movieService.updateMovie(id, requestDto);
 
