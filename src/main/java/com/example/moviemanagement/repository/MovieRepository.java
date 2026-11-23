@@ -1,4 +1,4 @@
-package com.example.moviemanagement.repesitory;
+package com.example.moviemanagement.repository;
 
 import com.example.moviemanagement.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
