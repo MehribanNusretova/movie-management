@@ -103,4 +103,5 @@ src/main/java/com/example/moviemanagement
 ## Author
 
 **Mehriban Nüsrətova** — Junior Java Backend Developer
+
 [LinkedIn](https://www.linkedin.com/in/mehriban-nusratova) · [GitHub](https://github.com/MehribanNusretova)
